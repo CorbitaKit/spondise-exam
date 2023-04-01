@@ -98,6 +98,10 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+        - "8081:8081"
 networks:
     sail:
         driver: bridge

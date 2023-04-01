@@ -14,6 +14,7 @@ class LoginRepository
             return response("Credentials don't match", Response::HTTP_UNAUTHORIZED);
         }
 
+        $user->update(['last_login' => date('Y-m-d')]);
         $token = $user->createToken('web:api');
         return response([
             'token' => $token->plainTextToken,

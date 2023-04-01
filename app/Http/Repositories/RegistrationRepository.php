@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use App\Events\UserRegistered;
 use App\Models\User;
 use Hash;
 class RegistrationRepository
@@ -14,6 +15,7 @@ class RegistrationRepository
             'password' => Hash::make($data->password),
         ]);
 
+        event(new UserRegistered($user));
         return $user;
     }
 }
